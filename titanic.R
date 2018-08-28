@@ -1,16 +1,20 @@
 library(readr)
-titanic_original <- read_csv("C:/Users/wrpauls21/Desktop/Springboard/Titanic/titanic_original.csv")
-View(titanic_original)
-attach(titanic_original)
+titanic <- read_csv("C:/Users/wrpauls21/Desktop/Springboard/Titanic/titanic_original.csv")
+View(titanic)
+attach(titanic)
 
 embarked[is.na(embarked)] <- "S"
-titanic_original$embarked <- embarked
+titanic$embarked <- embarked
 
-mean_age <- mean(titanic_original$age, na.rm = TRUE)
+mean_age <- mean(titanic$age, na.rm = TRUE)
 age[is.na(age)] <- round(mean(age, na.rm = TRUE))
-titanic_original$age <- age
+titanic$age <- age
 
 boat[is.na(boat)] <- "None"
-titanic_original$boat <- boat
+titanic$boat <- boat
 
-titanic_original$has_cabin_number <- NA
+library(dplyr)
+titanic <- mutate(titanic, has_cabin_number = ifelse(is.na(cabin), 0, 1))
+
+# saved clean data set to csv file
+write.csv(titanic,'titanic_clean.csv')
