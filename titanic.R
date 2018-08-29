@@ -3,16 +3,14 @@
 
 # read in titanic_original data set
 library(readr)
-titanic <- read_csv("C:/Users/wrpauls21/Desktop/Springboard/Titanic/titanic_original.csv")
+titanic <- read_csv("titanic_original.csv")
 View(titanic)
-?attach
 attach(titanic)
 
 # 1. Port of embarkation
 
 # replaced missing values in embarked with an S
-embarked[is.na(embarked)] <- "S"
-titanic$embarked <- embarked
+titanic$embarked[is.na(titanic$embarked)] <- "S"
 
 # 2. Age
 
@@ -20,14 +18,12 @@ titanic$embarked <- embarked
 mean_age <- mean(titanic$age, na.rm = TRUE)
 
 # populated missing age values with average age
-age[is.na(age)] <- round(mean(age, na.rm = TRUE))
-titanic$age <- age
+titanic$age[is.na(titanic$age)] <- round(mean(age, na.rm = TRUE))
 
 # 3. Lifeboat
 
 # Filled in missing values in boat column with "None"
-boat[is.na(boat)] <- "None"
-titanic$boat <- boat
+titanic$boat[is.na(titanic$boat)] <- "None"
 
 # 4. Cabin
 
