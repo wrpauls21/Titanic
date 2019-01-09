@@ -35,3 +35,23 @@ titanic <- mutate(titanic, has_cabin_number = ifelse(is.na(cabin), 0, 1))
 
 # saved clean data set to csv file
 write.csv(titanic,'titanic_clean.csv')
+
+
+#################################
+
+# titanic is avaliable in your workspace
+# 1 - Check the structure of titanic
+str(titanic)
+
+# 2 - Use ggplot() for the first instruction
+ggplot(___, aes(x = ___, fill = ___)) +
+  geom_bar(___ = ___)
+
+# 3 - Plot 2, add facet_grid() layer
+
+
+# 4 - Define an object for position jitterdodge, to use below
+posn.jd <- position_jitterdodge(0.5, 0, 0.6)
+
+# 5 - Plot 3, but use the position object from instruction 4
+
